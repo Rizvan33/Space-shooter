@@ -1,0 +1,78 @@
+html {
+	color: white;
+	height: 100%;
+	width: 100%;
+}
+
+
+body {
+	margin: 0px;
+}
+
+
+/* ------------------------------------------------------------- */
+#menu {
+	background-color: black;
+	height: 80px;
+	width: 100%;
+	font-size: 18px;
+	font-family: "Arial", sans-serif;
+	/* font-family: "Helvetica Neue", sans-serif;*/
+
+}
+
+.float_left {
+	float: left;
+	box-sizing: border-box;
+	padding: 31px 35px 31px 35px;
+	height: 80px;
+
+}
+
+
+.float_right {
+	float: right;
+	box-sizing: border-box;
+	padding: 31px 15px 31px 15px;
+	height: 80px;
+}
+
+#image {
+	float: left;
+	box-sizing: border-box;
+	padding: 18.5px 10px 18.5px 10px;
+	height: 80px;
+	width: 100px;
+
+}
+
+/* ------------------------------------------------------------- */
+canvas {
+	background-image: url(blue.png);
+
+}
+
+#espace {
+	clear: both;
+	height: 50px;
+	width: 100%;
+}
+
+#center {
+	height: 600px;
+	width: 600px;
+	margin: 0px auto 0px auto;
+
+}
+
+.float_left:hover {
+	background-color: grey;
+}
+
+
+.float_right:hover {
+	background-color: grey;
+	/*color: white;
+	text-decoration: none;
+	border-bottom: solid 1px blue;*/
+}
