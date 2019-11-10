@@ -8,7 +8,7 @@ class Enemie {
 	
 	}
 
-	update(world, index) {
+	update(world) {
 
 		this.x += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
 
