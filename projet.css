@@ -46,6 +46,12 @@ body {
 
 }
 
+#link{
+	color:white;
+	text-decoration:none;
+}
+
+
 /* ------------------------------------------------------------- */
 canvas {
 	background-image: url(blue.png);
