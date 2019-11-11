@@ -2,7 +2,7 @@ html {
 	color: white;
 	height: 100%;
 	width: 100%;
-	cursor: pointer;
+	
 }
 
 
@@ -27,6 +27,7 @@ body {
 	box-sizing: border-box;
 	padding: 31px 35px 31px 35px;
 	height: 80px;
+	cursor: pointer;
 
 }
 
@@ -36,6 +37,7 @@ body {
 	box-sizing: border-box;
 	padding: 31px 15px 31px 15px;
 	height: 80px;
+	cursor: pointer;
 }
 
 #image {
