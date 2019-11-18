@@ -1,40 +1,49 @@
 class Enemie {
 
-	constructor(x, y, speed, image) {
+	constructor(x, y, speed, image, niveau) {
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
 		this.image = image;
+		this.width = 20;
+		this.height = 20;
+		this.niveau = niveau;
+		
+	}
+
+	update(world, enemie) {
+
+		enemie.move();
+		enemie.supprime_enemies(world, enemie);
+
+	}
+	move() {
+		if (this.niveau <= 2) {
+			this.x += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
+		} else if (this.niveau <= 4) {
+			this.y += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
+		} else {
+			this.x += this.speed;
+			this.y += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
+		}
+	}
+
+
+
+	supprime_enemies(world, enemie) {
+		if (this.y === -100) {
+			world.enemies.delete(enemie);
+			world.score += 1;
+		}
+	}
+
 	
-	}
-
-	update(world) {
-
-		this.x += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
-
-		if (this.x > 600 || this.x < 0) {
-
-			this.speed = -this.speed; // afin de faire changer le sens des enemies lorsqu ils touchent les limites du canvas a gauche et a droite
-
-			this.y += 15; // afin de faire descendre legerement les enemies vers le vaisseau
-
-		}
-
-		if (this.y > 600 || this.y < 0) {
-
-			this.speed = -this.speed; // afin de faire changer le sens des enemies lorsqu il touche les limites du canvas en haut et en bas
-
-			this.speed += 0.1 * this.speed; // on augmente la vitesse de 10% lorsqu il touche en haut ou en bas
-		}
-
-		
-		
-	}
 
 	draw(contexte) {
-		contexte.drawImage(this.image, this.x, this.y, 25, 25);
+		contexte.drawImage(this.image, this.x, this.y, this.width, this.height);
 
 
 	}
 
 }
+
