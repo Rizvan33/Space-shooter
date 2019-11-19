@@ -13,6 +13,32 @@ window.onload = function () {
 }
 
 
+function initializeWorld() {
+	let world = {};
+
+	world.player = new Player(300, 550, 300, true, view("playerShip1_blue.png"));
+	world.niveau = 1;
+	world.nombre_enemies = 21;
+	world.vitesse_enemies = 2;
+	world.enemies = initializeEnemies(world);
+
+	world.missile = new Set();
+	world.liste_missile = new Set(); // cree une liste qui contiendra les coordonnes des missiles
+
+	world.vie = new Vie(560, 560, 3, view("vie.jpg"), true);
+	world.score = 0;
+	world.lastUpdate = Date.now();
+	world.move = new Set();
+
+	return world;
+
+}
+
+function view(path) {
+	let image = new Image();
+	image.src = path;
+	return image;
+}
 
 function gameLoop(world) {
 	// boucle principal de jeu
@@ -21,7 +47,7 @@ function gameLoop(world) {
 	draw(world);
 
 }
-// page de chargement a faire
+
 function update(world) {
 
 	// met a jour temps pour le delta
@@ -32,8 +58,7 @@ function update(world) {
 	// met a jour les coordonnes des enemies
 	world.enemies.forEach(enemie => enemie.update(world, enemie));
 
-	// met a jour la liste missile sans oublier de reconvertir le set en array
-	//world.missile = Array.from(world.missile);
+	// met a jour la liste missile 
 	world.missile.forEach(missile => missile.update(world, missile));
 
 	// met a jour les coordonnes du joueur
@@ -62,11 +87,6 @@ function draw(world) {
 	// dessine les vies
 	world.vie.draw(contexte);
 
-
-	// dessine texte niveau
-	dessine_texte_niveau(contexte, world)
-
-	dessine_texte_score(contexte, world)
 
 
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function initializeWorld() {
 	let world = {};
 
@@ -90,14 +91,29 @@ function dessine_texte_score(contexte, world) {
 	contexte.font = "30px Arial"
 	contexte.fillText("Score " + world.score.toString(), 20, 30);
 
+=======
+function initializeEnemies(world) {
+    world.enemies = [];
+    for (let i = 0; i < world.nombre_enemies; i++) {
+        // pour cree aleatoirement les enemies
+        let j = Math.floor((42) * Math.random());
+        let k = Math.floor((42) * Math.random());
+
+        if (i % 2 == 0) {
+            world.enemies.push(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("meteorite.png")));
+        }
+        if (i % 2 == 1) {
+            world.enemies.push(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("meteorite.png")));
+        }
+    }
+    return world.enemies
+>>>>>>> 36413c0d84ef45cdd6f6828ac0e453c973d0355e
 }
 
 
 function fin_partie(world) {
-	let contexte = document.getElementById('game_area').getContext('2d');
-	// nettoie le canvas
-	contexte.clearRect(0, 0, 600, 600);
-	contexte.fillText("GAME OVER", 200, 200);
-	contexte.fillText("Niveau " + world.niveau.toString(), 230, 300);
-	contexte.fillText("Score " + world.score.toString(), 230, 400);
+    let contexte = document.getElementById('game_area').getContext('2d');
+    // nettoie le canvas
+    contexte.clearRect(0, 0, 600, 600);
+    contexte.fillText("GAME OVER", 200, 200);
 }
