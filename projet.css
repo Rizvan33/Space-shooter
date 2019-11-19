@@ -2,14 +2,13 @@ html {
 	color: white;
 	height: 100%;
 	width: 100%;
-	
+
 }
 
 
 body {
 	margin: 0px;
 }
-
 
 /* ------------------------------------------------------------- */
 #menu {
@@ -52,6 +51,17 @@ body {
 #link{
 	color:white;
 	text-decoration:none;
+	list-style: none;
+}
+#connexion{
+	color:red;
+	text-decoration:none;
+	background-color:black;
+	border: 6px solid red;
+	padding: 10px;
+}
+#connexion: hover{
+	cursor:pointer;
 }
 
 
@@ -84,4 +94,28 @@ canvas {
 	/*color: white;
 	text-decoration: none;
 	border-bottom: solid 1px blue;*/
+}
+/* ------------------------------------------------------------- */
+#menubas{
+border: 1px solid black;
+text-align: center;
+padding: 12px;
+border-radius: 10px;
+background-color: black;
+position: absolute;
+width: 100%;
+bottom: 0; left: 0; right: 0;
+}
+#footer li a{
+color:white;
+text-decoration:none;
+}
+#footer li{
+display:inline;
+list-style: none;
+}
+
+/* ------------------------------------------------------------- */
+#noir{
+	color:black;
 }
