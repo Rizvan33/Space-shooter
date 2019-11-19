@@ -21,6 +21,7 @@ function initializeWorld() {
 
 
 
+
 function initializeEnemies(world) {
 
 	for (var i = 0; i < world.nombre_enemies; i++) {
@@ -33,7 +34,33 @@ function initializeEnemies(world) {
 		} else if (5 <= i && i < 10) {
 
 			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoGreen.png"), 2));
-		} 
+		} else if (10 <= i && i < 15) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoBlue.png"), 3));
+		} else if (15 <= i && i < 20) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoBlue.png"), 4));
+		} else if (20 <= i && i < 25) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoRed.png"), 5));
+		} else if (25 <= i && i < 30) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoRed.png"), 6));
+		} else if (30 <= i && i < 35) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoYellow.png"), 7));
+		} else if (35 <= i && i < 40) {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoYellow.png"), 8));
+		} else {
+
+			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/enemyBlack5.png"), 9));
+		}
+
+	}
+	return world.enemies;
+}
+
 
 
 function dessine_texte_niveau(contexte, world) {
