@@ -1,3 +1,4 @@
+
 function initializeWorld() {
 	let world = {};
 
@@ -72,32 +73,4 @@ function initializeEnemies(world) {
 
 	}
 	return world.enemies;
-}
-
-
-
-function dessine_texte_niveau(contexte, world) {
-
-	contexte.fillStyle = "red";
-	contexte.font = "30px Arial"
-	contexte.fillText("Niveau " + world.niveau.toString(), 20, 580);
-
-}
-
-function dessine_texte_score(contexte, world) {
-
-	contexte.fillStyle = "red";
-	contexte.font = "30px Arial"
-	contexte.fillText("Score " + world.score.toString(), 20, 30);
-
-}
-
-
-function fin_partie(world) {
-	let contexte = document.getElementById('game_area').getContext('2d');
-	// nettoie le canvas
-	contexte.clearRect(0, 0, 600, 600);
-	contexte.fillText("GAME OVER", 200, 200);
-	contexte.fillText("Niveau " + world.niveau.toString(), 230, 300);
-	contexte.fillText("Score " + world.score.toString(), 230, 400);
 }
