@@ -129,6 +129,7 @@ table {
  width:90%;
  }
 td{
+ text-align: center;
  background-color: yellow;
  border-width:1px;
  border-style:solid; 
