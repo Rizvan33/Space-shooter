@@ -16,7 +16,7 @@ class Missile {
 		missile.move();
 		missile.temps_de_vie(world, missile);
 		missile.supprime_missile(world, missile);
-		missile.collision_vaisseau_missile(world);
+		//missile.collision_vaisseau_missile(world);
 	}
 
 	move() {
@@ -24,7 +24,7 @@ class Missile {
 	}
 
 	temps_de_vie() {
-		this.life += 10;
+		this.life += 30;
 
 	}
 
@@ -33,6 +33,7 @@ class Missile {
 			world.missile.delete(missile);
 		}
 	}
+
 
 	collision_vaisseau_missile(world) {
 
@@ -48,4 +49,3 @@ class Missile {
 	}
 
 }
-
