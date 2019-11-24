@@ -7,14 +7,10 @@ class Vie {
 		this.nombre_vie = nombre_vie;
 		this.width = 25;
 		this.height = 25;
-
-
 	}
 
 	is_empty_enemies(world) {
 		if (world.enemies.size === 0) {
-
-
 			world.player.x = 300;
 			world.player.y = 550;
 			world.niveau += 1;
@@ -25,8 +21,6 @@ class Vie {
 			if (world.niveau % 4 === 0) {
 				world.vie.nombre_vie += 1;
 			}
-	
-
 		}
 
 	}
@@ -60,13 +54,8 @@ class Vie {
 	}
 
 	update(world) {
-
-
 		world.vie.is_empty_enemies(world);
 		world.vie.player_meurt(world);
-
-
-
 	}
 
 
@@ -75,7 +64,6 @@ class Vie {
 		for (let i = 0; i < this.nombre_vie; i++) {
 			contexte.drawImage(this.image, this.x - i * 30, this.y, this.width, this.height);
 		}
-
 	}
 
 }
