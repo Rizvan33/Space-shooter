@@ -119,3 +119,21 @@ list-style: none;
 #noir{
 	color:black;
 }
+
+/* ------------------------------------------------------------- */
+
+table {
+ border-width:1px; 
+ border-style:solid; 
+ border-color:black;
+ width:90%;
+ }
+td{
+ background-color: yellow;
+ border-width:1px;
+ border-style:solid; 
+ border-color:black;
+ width:50%;
+ height: 60px;
+}
+
