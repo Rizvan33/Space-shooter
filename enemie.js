@@ -78,7 +78,6 @@ class Enemie {
 			this.speed = -this.speed; // afin de faire changer le sens des enemies lorsqu il touche les limites du canvas en haut et en bas
 
 		}
-
 	}
 
 
