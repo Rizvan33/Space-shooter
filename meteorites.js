@@ -8,7 +8,7 @@ class Meteorites {
 		this.width = 20;
 		this.height = 20;
 		this.niveau = niveau;
-		
+
 	}
 
 	update(world, meteorite) {
@@ -16,35 +16,35 @@ class Meteorites {
 		meteorite.move();
 		meteorite.supprime_enemies(world, meteorite);
 
-    }
-    
+	}
+
 	move() {
-		if (this.niveau>=3 && this.niveau<5) {
-            this.x += this.speed; 
-            this.y -= this.speed; 
+		if (this.niveau >= 3 && this.niveau < 5) {
+			this.x += this.speed;
+			this.y -= this.speed;
 		} else if (this.niveau <= 7) {
-            let v = Math.floor((2) * Math.random());
-            if(v==0){
-			    this.x -= this.speed;
-                this.y -= this.speed;
-            }
-            else{
-                this.x += this.speed; 
-                this.y -= this.speed;
-            }
+			let v = Math.floor((2) * Math.random());
+			if (v == 0) {
+				this.x -= this.speed;
+				this.y -= this.speed;
+			}
+			else {
+				this.x += this.speed;
+				this.y -= this.speed;
+			}
 		} else {
-            let v2 = Math.floor((3) * Math.random());
-            if(v2==0){
-			    this.x -= this.speed;
-                this.y -= this.speed;
-            }
-            else if (v2==1) {
-                this.x += this.speed; 
-                this.y -= this.speed;
-            }
-            else{
-                this.x += this.speed;
-            }
+			let v2 = Math.floor((3) * Math.random());
+			if (v2 == 0) {
+				this.x -= this.speed;
+				this.y -= this.speed;
+			}
+			else if (v2 == 1) {
+				this.x += this.speed;
+				this.y -= this.speed;
+			}
+			else {
+				this.x += this.speed;
+			}
 		}
 	}
 
