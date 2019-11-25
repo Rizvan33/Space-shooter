@@ -21,6 +21,7 @@ function initializeWorld() {
 	world.vitesse_enemies = 2;
 	world.enemies = new Set();
 	world.meteorites= new Set();
+	world.pillule_vie= new Set();
 	world.enemies = initializeEnemies(world);
 	world.missile = new Set();
 	world.liste_missile = new Set(); // cree une liste qui contiendra les coordonnes des missiles
@@ -43,6 +44,8 @@ function initializeEnemies(world) {
 		let k = Math.floor((58) * Math.random());
 		let xm = Math.floor((42) * Math.random());
 		let ym = Math.floor((58) * Math.random());
+		let a = Math.floor((42) * Math.random());
+		let b = Math.floor((58) * Math.random());
 
 		if (0 <= i && i < 5) {
 			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoGreen.png"), 1));
@@ -52,24 +55,28 @@ function initializeEnemies(world) {
 		} else if (10 <= i && i < 15) {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_enemies, view(""), 3));
 			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoBlue.png"), 3));
+			world.pillule_vie.add(new Pillule_vie(a * 10, b * 10, world.vitesse_enemies, view("pill_blue.png"), 3));
 		} else if (15 <= i && i < 20) {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 4));
 			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoBlue.png"), 4));
 		} else if (20 <= i && i < 25) {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 5));
 			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoRed.png"), 5));
+			world.pillule_vie.add(new Pillule_vie(a * 10, b * 10, world.vitesse_enemies, view("pill_blue.png"), 5));
 		} else if (25 <= i && i < 30) {
 		        world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 6));
 			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoRed.png"), 6));
 		} else if (30 <= i && i < 35) {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 7));
 			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/ufoYellow.png"), 7));
+			world.pillule_vie.add(new Pillule_vie(a * 10, b * 10, world.vitesse_enemies, view("pill_blue.png"), 7));
 		} else if (35 <= i && i < 40) {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 8));
 			world.enemies.add(new Enemie(k * 10, j * 10, -world.vitesse_enemies, view("/images/enemies/ufoYellow.png"), 8));
 		} else {
 			world.meteorites.add(new Meteorites(xm * 10, ym * 10, world.vitesse_meteorites, view(""), 9));
 			world.enemies.add(new Enemie(k * 10, j * 10, world.vitesse_enemies, view("/images/enemies/enemyBlack5.png"), 9));
+			world.pillule_vie.add(new Pillule_vie(a * 10, b * 10, world.vitesse_enemies, view("pill_blue.png"), 9));
 		}
 
 	}
@@ -122,6 +129,8 @@ function initializeWorld() {
     world.enemies = initializeEnemies(world);
     world.meteorites = new Set();
 	world.meteorites = initializeEnemies(world);
+	world.pillule_vie = new Set();
+	world.pillule_vie = initializeEnemies(world);
 	world.missile = new Set();
 	world.liste_missile = new Set(); // cree une liste qui contiendra les coordonnes des missiles
 
