@@ -21,7 +21,7 @@ class Meteorites {
 	move() {
 		if (this.niveau >= 3 && this.niveau < 5) {
 			this.x += this.speed;
-			this.y -= this.speed;
+			this.y += this.speed;
 		} else if (this.niveau <= 7) {
 			let v = Math.floor((2) * Math.random());
 			if (v == 0) {

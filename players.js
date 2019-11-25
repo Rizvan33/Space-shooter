@@ -37,14 +37,14 @@ class Player {
 
 			if (world.niveau < 5) {
 
-				world.missile.add(new Missile(world.player.x + 18, world.player.y - 18, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
+				world.missile.add(new Missile(world.player.x + 18, world.player.y - 18, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
 				//world.liste_missile.add([this.x, this.y - 40]); // -30 pour les prendres en compte dans l ordonne
 
 				// 2 missiles si au dessus de niveau 5
 			} else {
 
-				world.missile.add(new Missile(world.player.x - 10, world.player.y - 20, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
-				world.missile.add(new Missile(world.player.x + 10, world.player.y - 20, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
+				world.missile.add(new Missile(world.player.x - 10, world.player.y - 20, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
+				world.missile.add(new Missile(world.player.x + 10, world.player.y - 20, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
 
 			}
 
