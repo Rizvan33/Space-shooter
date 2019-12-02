@@ -1,0 +1,55 @@
+h1{
+  text-align:center;
+  font-size: 40px;
+  color: white;
+}
+body#signin{
+  background-image: url("/images/jeu.png");
+}
+body#Formulaire{
+  background-image: url("/images/jeu.png");
+}
+body#regles{
+  background-image: url("/images/jeu2.jpeg");
+}
+
+#centrer{
+  text-align:center;
+}
+#centrer input[type=submit], #centrer input[type=button] {
+background-color:white;
+border: 1px solid red;
+padding: 5px;
+color: red;
+border-radius: 3px;
+}
+#centrer input[type=submit]:hover, #centrer input[type=button]:hover{
+background-color: red;
+color: white;
+border-radius: 150px;
+cursor:pointer;
+}
+
+.login{
+  color: white;
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding-top: 30px;
+  padding-right: 80px;
+  padding-bottom: 200px;
+  padding-left: 80px;
+
+  margin-top:100px;
+  margin-right: 50px;
+  margin-left: 0px;
+}
+
+.règles{
+  text-align:center;
+  color: white;
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+}
