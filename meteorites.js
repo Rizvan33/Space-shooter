@@ -1,58 +1,93 @@
 class Meteorites {
 
-	constructor(x, y, speed, image, niveau) {
+	constructor(x, y, speed, image, niveau, width, height, vie) {
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
 		this.image = image;
-		this.width = 20;
-		this.height = 20;
 		this.niveau = niveau;
+		this.width = width;
+		this.height = height;
+		this.vie = vie;
+		this.game = true;
+
 
 	}
 
 	update(world, meteorite) {
 
-		meteorite.move();
-		meteorite.supprime_enemies(world, meteorite);
+		meteorite.move(meteorite);
+		meteorite.collision_vaisseau_meteorite(world);
+		meteorite.collision_missiles_meteorite(world);
+		meteorite.supprime_meteorite(world, meteorite);
 
 	}
 
-	move() {
-		if (this.niveau >= 3 && this.niveau < 5) {
-			this.x += this.speed;
-			this.y += this.speed;
-		} else if (this.niveau <= 7) {
-			let v = Math.floor((2) * Math.random());
-			if (v == 0) {
-				this.x -= this.speed;
-				this.y -= this.speed;
-			}
-			else {
-				this.x += this.speed;
-				this.y -= this.speed;
-			}
-		} else {
-			let v2 = Math.floor((3) * Math.random());
-			if (v2 == 0) {
-				this.x -= this.speed;
-				this.y -= this.speed;
-			}
-			else if (v2 == 1) {
-				this.x += this.speed;
-				this.y -= this.speed;
-			}
-			else {
-				this.x += this.speed;
-			}
+	move(meteorite) {
+		if (this.niveau > 0) {
+			meteorite.deplacement_vertical();
+		}
+		if (this.niveau > 3) {
+			meteorite.deplacement_horizontal();
+		}
+		if (this.niveau > 5) {
+			meteorite.diagonal_haut_gauche_bas_droite();
+		}
+		if (this.niveau > 8) {
+			meteorite.diagonal_haut_droite_bas_gauche();
 		}
 	}
 
-	supprime_enemies(world, meteorite) {
-		if (this.y === -100) {
-			world.meteorite.delete(meteorite);
+	diagonal_haut_gauche_bas_droite() {
+		this.x += this.speed;
+		this.y += this.speed;
+	}
+
+	diagonal_haut_droite_bas_gauche() {
+		this.x -= this.speed;
+		this.y += this.speed;
+	}
+	deplacement_vertical() {
+		this.y += this.speed;
+	}
+	deplacement_horizontal() {
+		this.x += this.speed;
+	}
+
+	diminue_vie(world) {
+		if (this.game === false) {
+			this.vie += -1;
 			world.score += 1;
+			this.game = true;
 		}
+	}
+
+	supprime_meteorite(world, meteorite) {
+		meteorite.diminue_vie(world)
+		if (this.vie === 0) {
+			world.meteorites.delete(meteorite);
+		}
+	}
+
+
+
+	collision_vaisseau_meteorite(world) {
+		// collision vaisseau avec l'enemie
+		if (this.x < world.player.x + world.player.width && this.x + this.width > world.player.x && this.y < world.player.y + world.player.height && this.height + this.y > world.player.y) {
+			world.player.game = false;
+
+		}
+	}
+
+	collision_missiles_meteorite(world) {
+		// collision meteorite avec les differents missiles
+		world.missile.forEach(function (valeur, clef, set) {
+
+			if (valeur.x < this.x + this.width && valeur.x + valeur.width > this.x && valeur.y < this.y + this.height && valeur.height + valeur.y > this.y) {
+				this.game = false;
+				valeur.game = false;
+			}
+		}.bind(this));
 	}
 
 	draw(contexte) {
