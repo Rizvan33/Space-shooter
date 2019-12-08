@@ -9,6 +9,7 @@ class Missile {
 		this.life = 0;
 		this.width = 5;
 		this.height = 17;
+		this.game = true;
 	}
 
 	update(world, missile) {
@@ -16,7 +17,6 @@ class Missile {
 		missile.move();
 		missile.temps_de_vie(world, missile);
 		missile.supprime_missile(world, missile);
-		//missile.collision_vaisseau_missile(world);
 	}
 
 	move() {
@@ -29,18 +29,9 @@ class Missile {
 	}
 
 	supprime_missile(world, missile) {
-		if (this.life > 300 || this.y === -100) {
+		if (this.life > 300 || this.game === false) {
 			world.missile.delete(missile);
 		}
-	}
-
-
-	collision_vaisseau_missile(world) {
-
-		if (this.x < world.player.x + world.player.width && this.x + this.width > world.player.x && this.y < world.player.y + world.player.height && this.height + this.y > world.player.y) {
-			world.player.game = false;
-		}
-
 	}
 
 	draw(contexte) {
