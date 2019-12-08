@@ -15,6 +15,12 @@ class Player {
 	update(world) {
 		world.player.sortie_canvas(world);
 		world.player.evenement(world);
+		world.time += 1;
+
+		if (world.time % 600 == 0) {
+
+			world.meteorites.add(newMeteorite(world));
+		}
 
 	}
 
@@ -34,23 +40,27 @@ class Player {
 			this.x += this.speed * world.delta;
 		}
 		if (true == world.key.missile) {
+			// 1 seul missile si niveau en dessous de 6
+			if (world.niveau < 6) {
 
-			if (world.niveau < 5) {
+				world.missile.add(new Missile(world.player.x + 18, world.player.y - 18, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
+				
 
-				world.missile.add(new Missile(world.player.x + 18, world.player.y - 18, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
-				//world.liste_missile.add([this.x, this.y - 40]); // -30 pour les prendres en compte dans l ordonne
-
-				// 2 missiles si au dessus de niveau 5
+				// 2 missiles si au dessus de niveau 6
 			} else {
 
-				world.missile.add(new Missile(world.player.x - 10, world.player.y - 20, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
-				world.missile.add(new Missile(world.player.x + 10, world.player.y - 20, world.player.speed / 30, view("laser.png"))); // -30 pour affiche le missile centre
+				world.missile.add(new Missile(world.player.x - 10, world.player.y - 20, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
+				world.missile.add(new Missile(world.player.x + 10, world.player.y - 20, world.player.speed / 30, view("/images/laser.png"))); // -30 pour affiche le missile centre
 
 			}
 
 		}
-	}
+		
+
+
+	} 
 	
+
 	sortie_canvas(world) {
 		//si le vaisseau veux sortir du canvas on l'empeche de sortir
 		world.player.sortie_horizontal();
@@ -76,7 +86,11 @@ class Player {
 		}
 	}
 
+
 	draw(contexte) {
 		contexte.drawImage(this.image, this.x, this.y, this.width, this.height); // -20 pour affiche le vaisseau centre 
+
+
 	}
+
 }
