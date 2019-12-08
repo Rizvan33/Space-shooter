@@ -67,8 +67,7 @@ body {
 
 /* ------------------------------------------------------------- */
 canvas {
-	background-image: url(blue.png);
-
+	background-image: url(/images/blue.png);
 }
 
 #espace {
