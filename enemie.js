@@ -1,6 +1,6 @@
 class Enemie {
 
-	constructor(x, y, speed, image, niveau) {
+	constructor(x, y, speed, image, niveau, vie) {
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
@@ -8,12 +8,12 @@ class Enemie {
 		this.width = 20;
 		this.height = 20;
 		this.niveau = niveau;
-		//this.nombre_vie = nombre_vie;
+		this.vie = vie;
+		this.game = true;
 	}
 
 	update(world, enemie) {
-
-		enemie.move();
+		enemie.move(enemie);
 		enemie.supprime_enemies(world, enemie);
 		enemie.collision_vaisseau_enemies(world);
 		enemie.collision_missiles_enemies(world);
@@ -21,25 +21,57 @@ class Enemie {
 		enemie.direction_vertical();
 
 	}
-	move() {
-		if (this.niveau <= 2) {
-			this.x += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
-		} else if (this.niveau <= 4) {
-			this.y += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
-		} else {
-			this.x += this.speed;
-			this.y += this.speed; // afin de deplacer les enemies de gauche a droite et inversement
+	
+	move(enemie) {
+		if (this.niveau > 0) {
+			enemie.deplacement_horizontal();
+		}
+		if (this.niveau > 3) {
+			enemie.deplacement_vertical();
+		}
+		if (this.niveau > 5) {
+			enemie.diagonal_haut_gauche_bas_droite();
+		}
+		if (this.niveau > 8) {
+			enemie.diagonal_haut_droite_bas_gauche();
 		}
 	}
 
+	diagonal_haut_gauche_bas_droite() {
+		this.x += this.speed;
+		this.y += this.speed;
+	}
 
+	diagonal_haut_droite_bas_gauche() {
+		this.x -= this.speed;
+		this.y += this.speed;
+	}
+	deplacement_vertical() {
+		this.y += this.speed;
+	}
+	deplacement_horizontal() {
+		this.x += this.speed;
+	}
+
+	supprime_enemie(world, enemie) {
+		if (this.game === false) {
+			this.vie += -1;
+			world.score += 1;
+			this.game = true;
+		}
+	}
 
 	supprime_enemies(world, enemie) {
-		if (this.y === -100) {
+		enemie.supprime_horizontal();
+		enemie.supprime_vertical();
+		enemie.supprime_enemie(world, enemie)
+		if (this.vie === 0) {
 			world.enemies.delete(enemie);
-			world.score += 1;
 		}
+
 	}
+
+
 
 	collision_vaisseau_enemies(world) {
 		// collision vaisseau avec l'enemie
@@ -55,8 +87,8 @@ class Enemie {
 
 			if (valeur.x < this.x + this.width && valeur.x + valeur.width > this.x && valeur.y < this.y + this.height && valeur.height + valeur.y > this.y) {
 
-				this.y = -100; //enemies
-				valeur.y = -100; //missiles
+				this.game = false;
+				valeur.game = false; //missiles
 			}
 		}.bind(this));
 	}
@@ -78,6 +110,21 @@ class Enemie {
 			this.speed = -this.speed; // afin de faire changer le sens des enemies lorsqu il touche les limites du canvas en haut et en bas
 
 		}
+
+	}
+
+	supprime_horizontal() {
+		if (this.x > 650 || this.x < -50) {
+			this.game = false;
+		}
+
+	}
+
+	supprime_vertical() {
+		if (this.y > 650 || this.y < -50) {
+			this.game = false;
+		}
+
 	}
 
 
