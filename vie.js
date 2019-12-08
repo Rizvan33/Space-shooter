@@ -7,20 +7,27 @@ class Vie {
 		this.nombre_vie = nombre_vie;
 		this.width = 25;
 		this.height = 25;
+
+
 	}
 
 	is_empty_enemies(world) {
 		if (world.enemies.size === 0) {
+
+			world.nombre_enemies += 5;
+			world.enemies = initializeEnemies(world);
 			world.player.x = 300;
 			world.player.y = 550;
 			world.niveau += 1;
-			world.nombre_enemies += 5;
+
 			world.missile = new Set();
-			world.enemies = initializeEnemies(world);
+
+
 
 			if (world.niveau % 4 === 0) {
 				world.vie.nombre_vie += 1;
 			}
+
 		}
 
 	}
@@ -33,6 +40,7 @@ class Vie {
 			this.nombre_vie += -1;
 			world.player.game = true;
 			world.missile = new Set();
+			world.meteorites = new Set();
 
 
 			// pour que quand on meurt on fait reapparaitre les enemies dans de nouvelles coordonne pour pas mourrir directement successivement
@@ -54,16 +62,18 @@ class Vie {
 	}
 
 	update(world) {
+
 		world.vie.is_empty_enemies(world);
 		world.vie.player_meurt(world);
+
+
 	}
-
-
 
 	draw(contexte) {
 		for (let i = 0; i < this.nombre_vie; i++) {
 			contexte.drawImage(this.image, this.x - i * 30, this.y, this.width, this.height);
 		}
+
 	}
 
 }
