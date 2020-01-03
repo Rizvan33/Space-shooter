@@ -2,22 +2,26 @@
 
 <body id=signin>
   <div class="login">
-    <form>
-      <div id="centrer">
-        Connexion <br><br><br><br>
-      </div>
-      <div>
-        Username
-        <input type="text" placeholder="Username"><br><br>
-      </div>
-      <div>
-        Mot de passe
-        <input type="password" placeholder="Password"><br><br>
-      </div>
-      <div id="centrer">
-        <input type="submit" value="Connexion">
-        <input type="button" value="Annuler" onclick="history.go(-1)"> <br><br><br><br>
-      </div>
-    </form>
-    Vous n'avez pas de compte ? <a href="/css/Formulaire.html"> cliquer-ici </a>
-  </div>
+    <form name="inscription">
+			<div id="centrer">
+				Connexion <br><br><br><br>
+			</div>
+			<div>
+				Username
+				<input type="text" placeholder="Username"><br><br>
+			</div>
+			<div>
+				Mot de passe
+				<input type="password" placeholder="Password"><br><br>
+			</div>
+			<div id="centrer">
+				<input type="submit" value="Connexion">
+				<input type="button" value="Annuler" onclick='window.location.href="../projet.html";'> <br><br><br><br>
+			</div>
+		</form>
+		Vous n'avez pas de compte ? <a href="Formulaire.html"> Cliquer-ici </a>
+
+    <p style="color: red;" id="erreur"></p>
+    <script src="../js/app2.js"></script>
+
+	</div>
